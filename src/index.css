@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-background: white;
+  --color-background-hover: #e8e8e8;
+  --color-text-primary: black;
+}
+@variant dark {
+  --color-background: black;
+  --color-background-hover: #555;
+  --color-text-primary: white;
+}
+
+@layer base {
+  * {
+    transition-property: background-color, color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+  body {
+    @apply bg-background text-text-primary;
+  }
+}
+
+@layer components {
+  .content {
+    @apply flex flex-col w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[55%] mx-auto p-4;
+  }
+}
